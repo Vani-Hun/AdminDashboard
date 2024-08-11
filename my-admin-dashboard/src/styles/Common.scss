@@ -1,0 +1,116 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    line-height: 1.5;
+    color: #121212;
+}
+
+textarea,
+input {
+    font-size: 1rem;
+    font-family: inherit;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.2), 0 1px 2px hsla(0, 0%, 0%, 0.2);
+    background-color: white;
+    line-height: 1.5;
+    margin: 0;
+}
+
+#root {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+@mixin responsive($device) {
+    @if $device =='mobile' {
+        @media (max-width: 768px) {
+            @content;
+        }
+    }
+
+    @else if $device =='tablet' {
+        @media (min-width: 769px) and (max-width: 1024px) {
+            @content;
+        }
+    }
+
+    @else if $device =='desktop' {
+        @media (min-width: 1025px) {
+            @content;
+        }
+    }
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+
+.loading {
+    opacity: 0.15;
+    /* Làm mờ */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Lớp phủ màu đen bán trong suốt */
+    transition: opacity 200ms, background-color 200ms;
+    transition-delay: 200ms;
+    pointer-events: none;
+    /* Vô hiệu hóa sự kiện chuột */
+}
+
+button {
+    border: 1px solid;
+    border-radius: 3px;
+    margin-left: 20px;
+    cursor: pointer;
+    padding: 1px;
+    /* Padding cho nút để có không gian xung quanh văn bản */
+    overflow: hidden;
+    /* Để xử lý nội dung vượt quá */
+    text-overflow: ellipsis;
+    /* Để thêm dấu ba chấm khi văn bản quá dài */
+    white-space: nowrap;
+    /* Để giữ văn bản trong một dòng */
+    background: none;
+    /* Nền trong suốt */
+    line-height: 2.5;
+    /* Chiều cao dòng */
+    display: inline-block;
+    /* Để nút có thể căn chỉnh chính xác */
+    text-align: center;
+    /* Căn giữa văn bản theo chiều ngang */
+    vertical-align: middle;
+    /* Căn giữa văn bản theo chiều dọc */
+    transition: background-color 0.3s, color 0.3s;
+    /* Hiệu ứng chuyển đổi màu */
+
+    &:hover {
+        background-color: #CACACA;
+        transition: background-color 0.3s, color 0.3s;
+        color: #fff;
+    }
+
+}

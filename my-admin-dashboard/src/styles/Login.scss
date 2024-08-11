@@ -1,0 +1,121 @@
+$background-color: rgb(39, 46, 53);
+$form-container-bg-color: rgb(32, 39, 46);
+$primary-color: rgb(114, 114, 225);
+$font-color: white;
+$label-color: gray;
+
+@mixin responsive($device) {
+    @if $device =='mobile' {
+        @media (max-width: 768px) {
+            @content;
+        }
+    }
+
+    @else if $device =='tablet' {
+        @media (min-width: 769px) and (max-width: 1024px) {
+            @content;
+        }
+    }
+
+    @else if $device =='desktop' {
+        @media (min-width: 1025px) {
+            @content;
+        }
+    }
+}
+
+.background {
+    background-color: $background-color;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .form-container {
+        background-color: $form-container-bg-color;
+        color: $font-color;
+        display: flex;
+        flex-direction: column;
+        height: 50%;
+        width: 20%;
+        border-radius: 2%;
+
+        @include responsive('mobile') {
+            width: 80%;
+            height: auto;
+            padding: 20px;
+        }
+
+        @include responsive('tablet') {
+            width: 50%;
+            height: auto;
+            padding: 40px;
+        }
+
+        .key-sticker-image {
+            display: flex;
+            justify-content: center;
+            color: $font-color;
+            margin-top: 10px;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+
+            h2 {
+                text-align: center;
+                font-size: large;
+            }
+
+            h3 {
+                text-align: center;
+                font-size: large;
+                color: red;
+                transition: all 0.3s ease;
+            }
+
+            .form-group {
+                display: flex;
+                flex-direction: column;
+
+                label {
+                    color: $label-color;
+                    margin: 10px 15px 5px;
+                }
+
+                input {
+                    background: none;
+                    border-bottom: 2px solid $primary-color;
+                    margin: 0 15px;
+                    color: $font-color;
+                }
+            }
+
+            .submit-button {
+                background: none;
+                margin-top: 20px;
+                float: right;
+                margin-left: 70%;
+                margin-right: 15px;
+                font-size: small;
+                color: $primary-color;
+                border: 2px solid $primary-color;
+                overflow: hidden;
+                cursor: pointer;
+                transition: all 0.3s ease;
+
+                @include responsive('mobile') {
+                    float: right;
+                }
+
+                &:hover {
+                    background-color: $primary-color;
+                    color: white;
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+}
